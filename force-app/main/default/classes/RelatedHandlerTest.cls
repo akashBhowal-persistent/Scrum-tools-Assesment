@@ -3,13 +3,9 @@ private class RelatedHandlerTest {
     static testMethod void testGetContacts() {
     // Create test data
     List<Contact> testContacts = new List<Contact>();
-
     for (Integer i = 0; i < 10; i++) {
-
     Contact c = new Contact(FirstName='Test', LastName='Contact ' + i, Phone='555-555-' + i, Email='test' + i + '@example.com');
-
     testContacts.add(c);
-
     }
 
     insert testContacts;
@@ -18,7 +14,7 @@ private class RelatedHandlerTest {
 
     // Call the method being tested
 
-    List<Contact> results = RelatedHandler.getContacts('234567890');
+    List<Contact> results = RelatedHandler.getContacts(c.id);
 
 
 
@@ -81,9 +77,7 @@ private class RelatedHandlerTest {
     // Verify the results
 
     List<Contact> remainingContacts = [SELECT Id FROM Contact];
-
     System.assertEquals(0, remainingContacts.size(), 'Contacts were not deleted');
-
     }
 
 }
